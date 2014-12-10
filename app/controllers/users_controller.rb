@@ -7,6 +7,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new(params[:id])
       if @user.save
+        session[:user_id] = @user.id
         redirect_to root_url, notice: "Welcome to the dark side!"
       else
         render "New"
